@@ -4,6 +4,57 @@
   "name": "sNyteXx Termix Plugins",
   "apiVersion": 1,
   "publicKey": "kMtE8LuWicRQV5UnDM5y0Q+LwV1XY9uRjkkNFHney4g=",
-  "updatedAt": "2026-10-30T15:12:20.775Z",
-  "plugins": []
+  "updatedAt": "2026-10-30T15:13:43.841Z",
+  "plugins": [
+    {
+      "id": "winrm",
+      "name": "WinRM PowerShell",
+      "description": "PowerShell sessions on Windows servers over WinRM, in a Termix terminal tab.",
+      "author": "sNyteXx",
+      "category": "Terminal",
+      "repository": "https://github.com/sNyteXx/termix-plugin-winrm",
+      "icon": "SquareTerminal",
+      "features": [
+        "A persistent PowerShell session per tab: variables and the current folder carry over",
+        "WinRM over HTTP with NTLM message encryption, or over HTTPS with certificate checks",
+        "Local and Active Directory accounts, with the host's saved Termix login",
+        "Jump host support through Termix's SSH pipeline",
+        "Errors, warnings, verbose and Write-Host output in PowerShell's own colours",
+        "Command history, multi-line input, Ctrl+C to stop a running command",
+        "Tabs, split screen and the terminal theme of the SSH terminal"
+      ],
+      "docs": "https://github.com/sNyteXx/termix-plugin-winrm/tree/main/docs",
+      "contributes": [
+        "permissions",
+        "protocols",
+        "settings",
+        "tabs",
+        "uses"
+      ],
+      "versions": [
+        {
+          "version": "0.1.0",
+          "api": "1",
+          "url": "https://github.com/sNyteXx/termix-plugin-winrm/releases/download/v0.1.0/winrm-0.1.0.tmxplug",
+          "sha256": "b88929998e38fc09722aa66310d0b573d82f8a02e77c7a85c8d3c42aea4b4f87",
+          "signature": "L+77lQl4gTuJqHMGnHBbXHOQ/1sw+5/MC27pf1pSH0JPSGDz0j4tHnO+xrVL8fQ8/twAR0ujoVddZuycIMrWDQ==",
+          "size": 755481,
+          "capabilities": [
+            "credentials:read",
+            "credentials:use",
+            "ssh:connect",
+            "network:serve",
+            "ui:surface"
+          ],
+          "engine": {
+            "api": "^1.3",
+            "termix": ">=26.10.2"
+          },
+          "releaseNotesUrl": "https://github.com/sNyteXx/termix-plugin-winrm/releases/tag/v0.1.0",
+          "notes": "### Added\n\n- WinRM as a connection protocol next to SSH: a switch, port and login in the host editor, a filter in the host list and an entry in Quick Connect\n- A PowerShell terminal tab that keeps one session open, so variables, the current folder and `Get-History` carry over between commands\n- WinRM over HTTP with every message encrypted by NTLM (no `AllowUnencrypted`), or over HTTPS with a trusted CA, your own CA or a pinned certificate fingerprint\n- Local and Active Directory accounts with NTLM, using the host's saved Termix login, a saved credential, or the login typed into Quick Connect\n- Hosts behind jump hosts, through Termix's SSH pipeline\n- Errors, warnings, verbose, debug and `Write-Host` output in PowerShell's colours, formatted by PowerShell at the terminal's width\n- Line editing, command history, multi-line input with `>>` continuation, paste, `cls`, and Ctrl+C to stop a running command\n- Limits for sessions per user and in total, an idle timeout, and a keepalive that notices a lost session",
+          "publishedAt": "2026-10-30T15:10:13.000Z"
+        }
+      ]
+    }
+  ]
 }
