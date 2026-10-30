@@ -24,13 +24,7 @@
         "Tabs, split screen and the terminal theme of the SSH terminal"
       ],
       "docs": "https://github.com/sNyteXx/termix-plugin-winrm/tree/main/docs",
-      "contributes": [
-        "permissions",
-        "protocols",
-        "settings",
-        "tabs",
-        "uses"
-      ],
+      "contributes": ["permissions", "protocols", "settings", "tabs", "uses"],
       "versions": [
         {
           "version": "0.1.0",
