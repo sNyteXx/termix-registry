@@ -24,7 +24,9 @@ The plugins then show in **Plugins → Browse**, and new versions as updates. No
 
 ## Plugins
 
-None yet.
+| Plugin                                                                       | What it does                                                         |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| [WinRM PowerShell](https://github.com/sNyteXx/termix-plugin-winrm) (`winrm`) | PowerShell sessions on Windows servers over WinRM, in a terminal tab |
 
 The live list is [`snytexx/index.json`](snytexx/index.json), written by the sync workflow.
 

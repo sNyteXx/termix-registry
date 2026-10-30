@@ -1,0 +1,12 @@
+{
+  "$schema": "../../community-submission-schema.json",
+  "id": "winrm",
+  "repository": "https://github.com/sNyteXx/termix-plugin-winrm",
+  "maintainers": ["sNyteXx"],
+  "versions": [
+    {
+      "version": "0.1.0",
+      "sha256": "b88929998e38fc09722aa66310d0b573d82f8a02e77c7a85c8d3c42aea4b4f87"
+    }
+  ]
+}
