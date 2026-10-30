@@ -5,6 +5,10 @@
   "maintainers": ["sNyteXx"],
   "versions": [
     {
+      "version": "0.2.0",
+      "sha256": "75c493644f085efe37327136a5c8778f19e17ca82830ce18b992c1f36c0c858f"
+    },
+    {
       "version": "0.1.0",
       "sha256": "b88929998e38fc09722aa66310d0b573d82f8a02e77c7a85c8d3c42aea4b4f87"
     }
