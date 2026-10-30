@@ -4,7 +4,7 @@
   "name": "sNyteXx Termix Plugins",
   "apiVersion": 1,
   "publicKey": "kMtE8LuWicRQV5UnDM5y0Q+LwV1XY9uRjkkNFHney4g=",
-  "updatedAt": "2026-10-30T15:13:43.841Z",
+  "updatedAt": "2026-10-30T15:47:04.169Z",
   "plugins": [
     {
       "id": "winrm",
@@ -16,6 +16,7 @@
       "icon": "SquareTerminal",
       "features": [
         "A persistent PowerShell session per tab: variables and the current folder carry over",
+        "An HTTP API and a winrm.run service that run a script on a host and return its output as data, for automations and MCP servers",
         "WinRM over HTTP with NTLM message encryption, or over HTTPS with certificate checks",
         "Local and Active Directory accounts, with the host's saved Termix login",
         "Jump host support through Termix's SSH pipeline",
@@ -24,8 +25,36 @@
         "Tabs, split screen and the terminal theme of the SSH terminal"
       ],
       "docs": "https://github.com/sNyteXx/termix-plugin-winrm/tree/main/docs",
-      "contributes": ["permissions", "protocols", "settings", "tabs", "uses"],
+      "contributes": [
+        "permissions",
+        "protocols",
+        "settings",
+        "tabs",
+        "uses"
+      ],
       "versions": [
+        {
+          "version": "0.2.0",
+          "api": "1",
+          "url": "https://github.com/sNyteXx/termix-plugin-winrm/releases/download/v0.2.0/winrm-0.2.0.tmxplug",
+          "sha256": "75c493644f085efe37327136a5c8778f19e17ca82830ce18b992c1f36c0c858f",
+          "signature": "nnGH6VeEK3pv8tYj3lOW/NfG0TRvTUFeoDnu+J0+nhLhtVh4x+rpPCqDgDcI1sVfh3zoIqd3u5qr1RkqqZddCg==",
+          "size": 766747,
+          "capabilities": [
+            "credentials:read",
+            "credentials:use",
+            "ssh:connect",
+            "network:serve",
+            "ui:surface"
+          ],
+          "engine": {
+            "api": "^1.3",
+            "termix": ">=26.10.2"
+          },
+          "releaseNotesUrl": "https://github.com/sNyteXx/termix-plugin-winrm/releases/tag/v0.2.0",
+          "notes": "### Added\n\n- `POST /plugin-api/winrm/run`: runs a PowerShell script on a saved host and returns the output, errors, warnings, verbose and information streams as JSON, for MCP servers and other API clients\n- The `winrm.run` service, so other plugins (automations, fleets) can run scripts on Windows hosts over WinRM\n- The `winrm.run` permission, given to admins by default. Every run is audited with the script's sha256, never the script itself\n\n### Changed\n\n- The README explains installing from the sNyteXx registry",
+          "publishedAt": "2026-10-30T15:45:14.000Z"
+        },
         {
           "version": "0.1.0",
           "api": "1",
