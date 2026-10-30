@@ -1,0 +1,12 @@
+sNyteXx Termix Plugins registry
+Copyright 2026 sNyteXx
+
+This repository contains code and schemas adapted from Termix-Registry
+(https://github.com/Termix-SSH/Termix-Registry), licensed under the Apache
+License 2.0, copied from commit 68ee278481a09eaa91e229928dd5eb62feaa4132:
+
+  scripts/lib.mjs, scripts/sync.mjs, scripts/validate.mjs,
+  scripts/check-submission.mjs (modified: registry folder, official ids
+  read from the upstream index, summary text),
+  registry-index-schema.json, community-submission-schema.json,
+  .github/workflows/* (modified: runner, secret name, registry folder).

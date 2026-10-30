@@ -1,0 +1,69 @@
+name: Sync
+
+# Rebuilds snytexx/index.json from the versions pinned in snytexx/plugins/,
+# signing each reviewed file with the registry key.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "snytexx/plugins/**"
+  workflow_dispatch:
+  schedule:
+    - cron: "23 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: registry-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+
+      - run: npm ci
+
+      # A release that fails its checks is left out and fails the run at the
+      # end, but the rest of the index still gets committed.
+      - name: Sync releases into the index
+        id: sync
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TERMIX_SNYTEXX_SIGNING_KEY: ${{ secrets.TERMIX_SNYTEXX_SIGNING_KEY }}
+        run: npm run sync
+
+      - name: Validate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: npm run validate
+
+      - name: Commit
+        run: |
+          if git diff --quiet; then
+            echo "Index is up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add snytexx/index.json
+          git commit -m "chore: sync plugin releases"
+          git pull --rebase origin main
+          git push
+
+      - name: Report releases that were left out
+        if: steps.sync.outcome == 'failure'
+        run: |
+          echo "Some releases failed their checks, see the sync step."
+          exit 1
